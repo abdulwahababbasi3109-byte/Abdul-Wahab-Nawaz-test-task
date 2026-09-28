@@ -1,0 +1,51 @@
+You need to implement two main modules, following REST principles, Domain-Driven
+Architecture, and using TypeScript with a relational database (like PostgreSQL).
+
+Module 1: AI Chat Module
+● Accepts a user question.
+● Returns a mocked OpenAI response.
+● Stores the question, answer and tokens in the database.
+● Track monthly usage per user:
+○ Each user gets 3 free messages per month.
+○ After that, a valid subscription bundle is required.
+● Support multiple active bundles per user with different tiers:
+○ Basic (10 responses).
+○ Pro (100 responses).
+○ Enterprise (unlimited).
+● Deduct usage from the bundle with the latest remaining quota.
+● Auto reset free quota on the 1st of each month.
+● Throw structured errors if the user exceeds quota.
+● Constraints:
+○ Simulate Open Ai Api response time delay (mocked).
+
+Module 2: Subscription Bundle Module
+● Allow users to:
+○ Create subscription bundles (Basic, Pro, Enterprise)
+○ Choose billing cycle: monthly or yearly
+○ Toggle auto-renew
+● Each subscription includes:
+○ maxMessages, price, startDate, endDate, renewalDate
+● Simulate billing logic:
+○ Auto-renew subscriptions if enabled
+○ If "payment fails" (randomly), mark subscription inactive
+● Support cancellation:
+○ Ends current billing cycle
+○ Prevents renewal
+○ Preserves usage history
+
+Architecture
+● Use Clean Architecture (DDD-style)
+● Layers: domain/entities, services, repositories, controllers
+● Organize modules independently (e.g., chat/, subscriptions/)
+● TypeScript-first.
+● Configure prettier and Eslint.
+
+Submission Guidelines
+Please follow the instructions below carefully:
+1. Create a public GitHub repository to manage your code.
+2. Name the repository using your full name.
+3. Add a README.md file that clearly explains your code and any other relevant details.
+4. Upload the provided test PDF file to the repository as part of your submission.
+5. Once you've completed the task,reply to this email with the link to your GitHub repo.
+Deadline: You have 48 hours to complete this task.
+Submissions will not be entertained after the deadline.
